@@ -14,13 +14,14 @@ import (
 // Options specifies parameters for mongodb client.
 type Options struct {
 	//Database  string
-	URI       string
-	Username  string
-	Password  string
-	TLSCAFile string
-	Timeout   time.Duration                 // Defaults to 10 seconds
-	Logf      func(format string, v ...any) // Defaults to log.Printf
-	Debug     bool                          // Log debug messages
+	URI         string
+	Username    string
+	Password    string
+	TLSCAFile   string
+	Timeout     time.Duration // Defaults to 10 seconds
+	MinPoolSize uint64
+	Logf        func(format string, v ...any) // Defaults to log.Printf
+	Debug       bool                          // Log debug messages
 }
 
 // DefaultTimeout is used when Options Timeout isn't specified.
@@ -83,7 +84,7 @@ func New(opt Options) (*mongo.Client, error) {
 	{
 		ctx, cancel := context.WithTimeout(context.Background(), timeout)
 		defer cancel()
-		mongoOptions := options.Client().ApplyURI(uri).SetRetryWrites(false)
+		mongoOptions := options.Client().ApplyURI(uri).SetRetryWrites(false).SetMinPoolSize(opt.MinPoolSize)
 
 		if opt.Username != "" || opt.Password != "" {
 			cred := options.Credential{
