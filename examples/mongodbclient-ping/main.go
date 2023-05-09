@@ -8,18 +8,22 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/udhos/boilerplate/boilerplate"
 	"github.com/udhos/boilerplate/envconfig"
-	"github.com/udhos/boilerplate/secret"
 	"go.mongodb.org/mongo-driver/mongo"
 
 	"github.com/udhos/mongodbclient/mongodbclient"
 )
 
+const version = "0.1.0"
+
 func main() {
 
 	me := filepath.Base(os.Args[0])
 
-	env := getEnv(me)
+	log.Print(boilerplate.LongVersion(me + " version=" + version))
+
+	env := envconfig.NewSimple(me)
 
 	clientOptions := mongodbclient.Options{
 		Debug:     true,
@@ -40,29 +44,19 @@ func main() {
 	}
 }
 
-func getEnv(me string) *envconfig.Env {
-	roleArn := os.Getenv("SECRET_ROLE_ARN")
-
-	log.Printf("SECRET_ROLE_ARN='%s'", roleArn)
-
-	secretOptions := secret.Options{
-		RoleSessionName: me,
-		RoleArn:         roleArn,
-	}
-	secret := secret.New(secretOptions)
-	envOptions := envconfig.Options{
-		Secret: secret,
-	}
-	env := envconfig.New(envOptions)
-	return env
-}
-
 func ping(client *mongo.Client, timeout time.Duration) {
 	ctx, cancel := context.WithTimeout(context.Background(), timeout)
 	defer cancel()
-	if errPing := client.Ping(ctx, nil); errPing != nil {
+
+	begin := time.Now()
+
+	errPing := client.Ping(ctx, nil)
+
+	elap := time.Since(begin)
+
+	if errPing != nil {
 		log.Printf("mongo ping: error: %v", errPing)
 	} else {
-		log.Printf("mongo ping: ok")
+		log.Printf("mongo ping: ok: elapsed %v", elap)
 	}
 }
