@@ -3,7 +3,7 @@ module github.com/udhos/mongodbclient
 go 1.20
 
 require (
-	github.com/udhos/boilerplate v0.12.0
+	github.com/udhos/boilerplate v1.0.0
 	go.mongodb.org/mongo-driver v1.11.4
 )
 
@@ -45,5 +45,5 @@ require (
 	golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/text v0.3.7 // indirect
-	gopkg.in/yaml.v2 v2.2.8 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
