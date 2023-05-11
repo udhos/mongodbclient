@@ -33,7 +33,7 @@ docker run --rm --name mongo-main -p 27017:27017 mongo
 Fire up `mongodbclient-ping`:
 
 ```bash
-$ mongodbclient-ping 
+$ mongodbclient-ping
 2023/05/11 02:18:36 mongodbclient-ping version=0.1.0 runtime=go1.20.4 boilerplate=1.0.1 GOOS=linux GOARCH=amd64 GOMAXPROCS=12
 2023/05/11 02:18:36 envconfig.NewSimple: SECRET_ROLE_ARN=''
 2023/05/11 02:18:36 MONGO_URI=[] using MONGO_URI=mongodb://localhost:27017/ default=mongodb://localhost:27017/
