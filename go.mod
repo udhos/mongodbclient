@@ -3,7 +3,7 @@ module github.com/udhos/mongodbclient
 go 1.20
 
 require (
-	github.com/udhos/boilerplate v1.0.0
+	github.com/udhos/boilerplate v1.0.1
 	go.mongodb.org/mongo-driver v1.11.4
 )
 
