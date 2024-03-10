@@ -13,7 +13,6 @@ import (
 
 // Options specifies parameters for mongodb client.
 type Options struct {
-	//Database  string
 	URI         string
 	Username    string
 	Password    string

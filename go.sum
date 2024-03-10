@@ -70,8 +70,8 @@ github.com/montanaflynn/stats v0.7.1/go.mod h1:etXPPgVO6n31NxCd9KQUMvCM+ve0ruNzt
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
-github.com/udhos/boilerplate v1.2.3 h1:ldn9GJ8fhNbhcpY0qson3i8j1pmhDr285aK4goWYhhs=
-github.com/udhos/boilerplate v1.2.3/go.mod h1:tm08k2yWpsSl3KByKzV01JGrycaV0sQ1j+zrj93DBtI=
+github.com/udhos/boilerplate v1.2.4 h1:YZO7zYjYWegzM48mzHUMnSsLdFPkms6iWi0TAIoydBg=
+github.com/udhos/boilerplate v1.2.4/go.mod h1:PpGAHiqD7LUXx/QtX19V/vVlllcqRVrT8KoQGcNEFXY=
 github.com/xdg-go/pbkdf2 v1.0.0 h1:Su7DPu48wXMwC3bs7MCNG+z4FhcyEuz5dlvchbq0B0c=
 github.com/xdg-go/pbkdf2 v1.0.0/go.mod h1:jrpuAogTd400dnrH08LKmI/xc1MbPOebTwRqcT5RDeI=
 github.com/xdg-go/scram v1.1.2 h1:FHX5I5B4i4hKRVRBCFRxq1iQRej7WO3hhBuJf+UUySY=
