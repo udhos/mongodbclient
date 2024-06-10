@@ -1,9 +1,9 @@
 module github.com/udhos/mongodbclient
 
-go 1.22.3
+go 1.22.4
 
 require (
-	github.com/udhos/boilerplate v1.2.7
+	github.com/udhos/boilerplate v1.2.8
 	go.mongodb.org/mongo-driver v1.13.1
 )
 
