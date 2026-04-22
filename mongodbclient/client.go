@@ -2,13 +2,12 @@
 package mongodbclient
 
 import (
-	"context"
 	"log"
 	"net/url"
 	"time"
 
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/v2/mongo"
+	"go.mongodb.org/mongo-driver/v2/mongo/options"
 )
 
 // Options specifies parameters for mongodb client.
@@ -17,7 +16,6 @@ type Options struct {
 	Username    string
 	Password    string
 	TLSCAFile   string
-	Timeout     time.Duration // Defaults to 10 seconds
 	MinPoolSize uint64
 	Logf        func(format string, v ...any) // Defaults to log.Printf
 	Debug       bool                          // Log debug messages
@@ -35,11 +33,6 @@ func New(opt Options) (*mongo.Client, error) {
 	logf := opt.Logf
 	if logf == nil {
 		logf = log.Printf
-	}
-
-	timeout := opt.Timeout
-	if timeout == 0 {
-		timeout = DefaultTimeout
 	}
 
 	//
@@ -81,8 +74,6 @@ func New(opt Options) (*mongo.Client, error) {
 	var client *mongo.Client
 
 	{
-		ctx, cancel := context.WithTimeout(context.Background(), timeout)
-		defer cancel()
 		mongoOptions := options.Client().ApplyURI(uri).SetRetryWrites(false).SetMinPoolSize(opt.MinPoolSize)
 
 		if opt.Username != "" || opt.Password != "" {
@@ -94,7 +85,7 @@ func New(opt Options) (*mongo.Client, error) {
 		}
 
 		var errConnect error
-		client, errConnect = mongo.Connect(ctx, mongoOptions)
+		client, errConnect = mongo.Connect(mongoOptions)
 		if errConnect != nil {
 			if debug {
 				logf("%s: mongo connect: %v", me, errConnect)
